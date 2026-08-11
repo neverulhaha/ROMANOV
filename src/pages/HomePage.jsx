@@ -365,7 +365,7 @@ export default function HomePage({ onAddToCart }) {
               >
                 <div className="space-y-4">
                   <div className="h-64 overflow-hidden rounded-xl bg-slate-50">
-                    <img
+                    <SmartImage
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500 filter contrast-[1.05]"

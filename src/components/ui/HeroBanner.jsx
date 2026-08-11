@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Button from './Button';
+import SmartImage from './SmartImage';
 
 export default function HeroBanner({ title, subtitle, description, image, ctaPrimary, ctaSecondary, onPrimaryClick, onSecondaryClick }) {
   const containerRef = useRef(null);
@@ -17,9 +18,10 @@ export default function HeroBanner({ title, subtitle, description, image, ctaPri
     <section ref={containerRef} className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#142342] text-white py-28">
       {/* Background Image with Parallax & Scale */}
       <motion.div className="absolute inset-0 z-0" style={{ y: bgY, scale }}>
-        <img
+        <SmartImage
           src={image}
           alt={title}
+          priority={true}
           className="w-full h-full object-cover opacity-45"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#142342] via-[#142342]/50 to-transparent" />

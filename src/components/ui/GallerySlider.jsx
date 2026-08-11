@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SmartImage from './SmartImage';
 
 export default function GallerySlider({ images = [] }) {
   return (
@@ -17,7 +18,7 @@ export default function GallerySlider({ images = [] }) {
             data-cursor="view"
             data-cursor-text="VIEW"
           >
-            <img
+            <SmartImage
               src={imgSrc}
               alt={`Gallery item ${idx + 1}`}
               className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"

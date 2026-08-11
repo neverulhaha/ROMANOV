@@ -26,6 +26,8 @@ export default defineConfig({
     drop: ['console', 'debugger'],
   },
   build: {
+    // Оптимизация размера ассетов (встраивание небольших файлов < 4KB)
+    assetsInlineLimit: 4096,
     // SECURITY-HARDENING: Отключение публикации исходников (source maps)
     sourcemap: false,
     // SECURITY-HARDENING: Агрессивная обфускация и минификация
@@ -48,7 +50,13 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
       },
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-animation': ['framer-motion', 'gsap', 'lenis'],
+          'vendor-icons': ['lucide-react'],
+        },
+      },
     },
   },
 });
-

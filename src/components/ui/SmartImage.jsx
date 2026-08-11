@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
 
 /**
- * SmartImage — Компонент автоматического подбора формата изображений.
- * Пытается загрузить запрошенный файл, а в случае ошибки (или смены расширения на .png/.jpg/.webp/.avif)
- * автоматически перебирает альтернативные расширения.
+ * SmartImage — Оптимизированный компонент подбора формата и загрузки изображений.
+ * - Приоритетно загружает формат .webp
+ * - Использует асинхронный декодинг (decoding="async") и ленивую загрузку (loading="lazy")
+ * - Поддерживает проп priority={true} для ускорения ключевых (LCP) ресурсов
  */
-export default function SmartImage({ src, alt = '', className = '', ...props }) {
+export default function SmartImage({
+  src,
+  alt = '',
+  className = '',
+  loading,
+  priority = false,
+  ...props
+}) {
   if (!src) return null;
 
   const basePath = src.replace(/\.(jpg|jpeg|png|webp|avif)$/i, '');
   const originalExt = src.slice(basePath.length).toLowerCase();
 
-  // Список всех возможных расширений (оригинальное расширение в начале)
-  const allExts = Array.from(new Set([originalExt, '.png', '.jpg', '.webp', '.avif', '.jpeg'])).filter(Boolean);
+  // Список всех возможных расширений (.webp в первую очередь, затем оригинальное и фолбэки)
+  const allExts = Array.from(new Set(['.webp', originalExt, '.png', '.jpg', '.avif', '.jpeg'])).filter(Boolean);
 
   const [extIndex, setExtIndex] = useState(0);
 
@@ -33,6 +41,9 @@ export default function SmartImage({ src, alt = '', className = '', ...props }) 
       src={currentSrc}
       alt={alt}
       className={className}
+      loading={priority ? 'eager' : (loading || 'lazy')}
+      fetchPriority={priority ? 'high' : 'auto'}
+      decoding="async"
       onError={handleError}
       {...props}
     />

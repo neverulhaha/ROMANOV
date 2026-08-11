@@ -5,8 +5,8 @@ export const siteConfig = {
     address: 'Санкт-Петербург, Невский проспект, 24',
     phone: '+7 (812) 312-77-88',
     email: 'concierge@romanov1792.ru',
-    logo: '/img/caffe-gilli.svg',
-    logoWhite: '/img/caffe-gilli-white.svg',
+    logo: '/img/romanov-r.svg',
+    logoWhite: '/img/romanov-r.svg',
   },
   navigation: [
     { name: 'Главная', path: '/' },
