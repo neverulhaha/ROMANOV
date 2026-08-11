@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --colPrimario: #0D1F18;
+    --colContrasto: #E2C17C;
+    --colContrastoScuro: #C5A059;
+    --colCream: #FAF8F5;
+    --colGray: #F1F3F5;
+    --colBianco: #FCFCFC;
+  }
+
+  *, html, body, a, button, input, select, textarea {
+    cursor: auto;
+  }
+
+  /* Completely hide native browser scrollbars globally */
+  html, body, * {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  body {
+    background-color: var(--colBianco);
+    color: var(--colPrimario);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+.bg-custom-1 {
+  background-color: var(--colCream);
+}
+
+.bg-custom-2 {
+  background-color: var(--colGray);
+}
+
+.bg-custom-3 {
+  background-color: var(--colPrimario);
+}
+
+.bg-np-white {
+  background-color: var(--colBianco);
+}
+
+.strip__title1 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  color: var(--colPrimario);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.strip__title1--white {
+  color: var(--colBianco);
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--colPrimario);
+  border-bottom: 2px solid var(--colContrasto);
+  padding-bottom: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.read-more:hover {
+  color: var(--colContrastoScuro);
+  border-color: var(--colPrimario);
+  transform: translateX(4px);
+}
+
+.read-more--white {
+  color: var(--colBianco);
+  border-color: var(--colContrasto);
+}
+
+.read-more--white:hover {
+  color: var(--colContrasto);
+  border-color: var(--colBianco);
+}
+
+.glass-effect {
+  background: rgba(252, 252, 252, 0.95);
+  backdrop-filter: blur(12px);
+}
